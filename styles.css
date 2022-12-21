@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+    font-family: Roboto, sans-serif;
+    box-sizing: border-box; 
+    margin: 0;
+}
+
+:root {
+    font-size: 10px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image:
+    url(./images/tree.jpg),
+    linear-gradient(to top, #697135, #966F33);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);}
+
+nav,
+section,
+footer {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s;
+}
+
+nav:hover,
+section:hover,
+footer:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+nav {
+    height: 60px;
+    width: 95%;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+section {
+    height: 480px;
+    width: 60%;
+    border-radius: 20px;
+}
+
+footer {
+    height: 55px;
+    width: 50%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
