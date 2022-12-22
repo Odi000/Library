@@ -14,7 +14,7 @@ body {
     width: 100vw;
     height: 100vh;
     background-image:
-    url(./images/tree.jpg),
+    url(./images/tree_8px.jpg),
     linear-gradient(to top, #697135, #966F33);
     background-size: cover;
     background-repeat: no-repeat;
@@ -22,25 +22,40 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);}
+    /* -webkit-backdrop-filter:4 blur(4px); */
+    /* backdrop-filter: blur(4px); */
+}
 
 nav,
 section,
 footer {
-    background-color: rgba(255, 255, 255, 0.2);
-    transition: background-color 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: double 6px rgba(255, 255, 255, 0.12);
+    transition: 
+    background-color 0.3s,
+    border 0.3s;
 }
 
 nav:hover,
 section:hover,
 footer:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.14);
+    border: double 6px rgba(255, 255, 255, 0.16);
+}
+
+nav:hover {
+    border-top: none;
+}
+
+footer:hover {
+    border-bottom: none;
 }
 
 nav {
     height: 60px;
     width: 95%;
+    border-top: none;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
@@ -49,11 +64,52 @@ section {
     height: 480px;
     width: 60%;
     border-radius: 20px;
+    display: grid;
+    place-items: center;
+}
+
+.bookshelf {
+    position: relative;
+    width: 35%;
+    height: auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: scale 0.5s;
+}
+
+.clicked {
+    scale: 0.05;
+}
+
+.bookshelf>img {
+    width: 100%;
+}
+
+.key-hole {
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: width 0.3s;
+}
+
+.key-hole:hover {
+    width: 38%;
+}
+
+.key-hole:active {
+    width: 30%;
+}
+
+.key-hole>img {
+    width: 100%;
 }
 
 footer {
     height: 55px;
     width: 50%;
+    border-bottom: none;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
