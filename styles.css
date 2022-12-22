@@ -22,8 +22,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* -webkit-backdrop-filter:4 blur(4px); */
-    /* backdrop-filter: blur(4px); */
 }
 
 nav,
@@ -52,6 +50,8 @@ footer:hover {
     border-bottom: none;
 }
 
+/*---- HEADER ----*/
+
 nav {
     height: 60px;
     width: 95%;
@@ -59,6 +59,8 @@ nav {
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
 }
+
+/*---- BOOKSHELF ----*/
 
 section {
     height: 480px;
@@ -68,9 +70,11 @@ section {
     place-items: center;
 }
 
+/*- Locked -*/
+
 .bookshelf {
     position: relative;
-    width: 35%;
+    width: min(50%, 430px);
     height: auto;
     background-size: contain;
     background-repeat: no-repeat;
@@ -105,6 +109,46 @@ section {
 .key-hole>img {
     width: 100%;
 }
+
+.library {
+    display: none;
+}
+
+/*- Unlocked -*/
+
+.unlocked {
+    max-height: 100%;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 
+    repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    text-align: center;
+    overflow-y: auto;
+}
+
+/* .unlocked > div {
+    display: flex;
+
+} */
+
+.unlocked img {
+    width: 75%;
+}
+
+.unlocked p {
+    font-size: 24px;
+    font-weight: 700;
+    width: fit-content;
+    margin: 10px auto 0;
+    background-color: rgba(0, 0, 0, 0.24);
+    box-shadow:
+    0 0 0 8px rgba(0, 0, 0, 0.24);
+    border-radius: 8px;
+    color: wheat;
+}
+
+/*---- FOOTER ----*/
 
 footer {
     height: 55px;
