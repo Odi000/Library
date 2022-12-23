@@ -4,7 +4,8 @@ const
     section = document.querySelector('section'),
     bookShelf = document.querySelector('.bookshelf'),
     keyHole = document.querySelector('.key-hole'),
-    library = document.querySelector('.library');
+    library = document.querySelector('.library'),
+    bookDescrition = document.querySelector('.book-description');
 
 keyHole.onclick = function() {
     bookShelf.classList.add('clicked');
@@ -50,6 +51,11 @@ books.forEach(book => {
     bookTitle.textContent = book.title;
 
     library.appendChild(divContainer);
+
+    deleteBtn.onclick = deleteBook;
+    divContainer.onclick = (e) => {
+        viewDescription(e, deleteBtn, trashBin, book);
+    }
 })
 
 /* Book Constructor */
@@ -64,4 +70,16 @@ function Book(title, author, pages, read) {
 function getBookCover() {
     const randomNr = Math.floor(Math.random()*5+1);
     return `./images/books/book_${randomNr}.png`;
+}
+
+/* Delete book element */
+function deleteBook() {
+    this.parentNode.remove();
+}
+
+/* Opend Book */
+function viewDescription(e, deleteBtn, trashBin) {
+    if(e.target === deleteBtn || e.target === trashBin) return 
+    library.style.display = 'none';
+    bookDescrition.classList.add('open');
 }
