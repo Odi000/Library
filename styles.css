@@ -121,26 +121,65 @@ section {
     padding: 32px;
     display: grid;
     grid-template-columns: 
-    repeat(auto-fit, minmax(120px, 1fr));
+    repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     text-align: center;
     overflow-y: auto;
 }
 
-/* .unlocked > div {
-    display: flex;
+.unlocked > div {
+    position: relative;
+}
 
-} */
-
-.unlocked img {
+.unlocked > div > img {
     width: 75%;
+    filter: contrast(90%);
+    transition: filter 0.3s;
+}
+
+.unlocked > div:hover > img {
+    filter: contrast(160%);
+}
+
+/*- Delete Button -*/
+
+.unlocked > div > .delete {
+    display: none;
+    transition: scale 0.1s;
+} 
+
+.unlocked > div:hover .delete {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 16%;
+    background-color: red;
+    border-radius: 3px;
+    display: grid;
+    place-items: center;
+}
+
+.unlocked > div:hover [alt*='del'] {
+    width: 100%;
+    filter: 
+    invert(15%) sepia(22%) 
+    saturate(7313%) hue-rotate(346deg) 
+    brightness(83%) contrast(124%);
+}
+
+.delete:hover {
+    scale: 1.1;
+}
+
+.delete:active {
+    scale: 1;
 }
 
 .unlocked p {
     font-size: 24px;
     font-weight: 700;
     width: fit-content;
-    margin: 10px auto 0;
+    margin: 16px auto 0;
     background-color: rgba(0, 0, 0, 0.24);
     box-shadow:
     0 0 0 8px rgba(0, 0, 0, 0.24);

@@ -1,3 +1,5 @@
+/*--- Main global vars & Bookshelf locked stage ---*/
+
 const
     section = document.querySelector('section'),
     bookShelf = document.querySelector('.bookshelf'),
@@ -28,15 +30,38 @@ new Book('The Kite Runner', 'Khaled Hosseini', 371, 'Yes');
 const books = [warAndPeace,theCastle,theGeneral,kiteRunner];
 
 books.forEach(book => {
-    div = document.createElement('div');
-    img = document.createElement('img');
-    para = document.createElement('p');
-    console.log(library);
+    const divContainer = document.createElement('div');
+    const deleteBtn = document.createElement('div');
+    const trashBin = document.createElement('img');
+    const bookImg = document.createElement('img');
+    const bookTitle = document.createElement('p');
+
+    deleteBtn.appendChild(trashBin);
+    divContainer.appendChild(deleteBtn);
+    divContainer.appendChild(bookImg);
+    divContainer.appendChild(bookTitle);
+
+    deleteBtn.classList.add('delete');
+    trashBin.src = "./images/trash-can.svg";
+    trashBin.alt = "delete";
+
+    bookImg.src = getBookCover();
+
+    bookTitle.textContent = book.title;
+
+    library.appendChild(divContainer);
 })
 
-function Book(name, author, pages, read) {
-    this.name = name;
+/* Book Constructor */
+function Book(title, author, pages, read) {
+    this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+}
+
+/* Random book img generator */
+function getBookCover() {
+    const randomNr = Math.floor(Math.random()*5+1);
+    return `./images/books/book_${randomNr}.png`;
 }
