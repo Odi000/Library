@@ -69,7 +69,7 @@ function Book(title, author, pages, read, descr) {
 
 /* Random book img generator */
 function getBookCover() {
-    const randomNr = Math.floor(Math.random()*5+1);
+    const randomNr = Math.floor(Math.random()*10+1);
     return `./images/books/book_${randomNr}.png`;
 }
 
