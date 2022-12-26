@@ -204,6 +204,7 @@ section {
 .open {
     display: block;
     padding: 32px;
+    padding-left: 38px;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     max-height: 100%;
@@ -231,6 +232,33 @@ h1 span {
     float: right;
     text-shadow: none;
     color: rgba(255, 255, 255, 0.6);
+}
+
+button {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    padding: 0;
+    font-size: 20px;
+    font-family: Roboto, sans-serif;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: double 6px rgba(255, 255, 255, 0.16);
+    border-bottom-right-radius: 18px;
+    overflow: hidden;
+}
+
+button div{
+    width: 100%;
+    height: 100%;
+    padding: 6px 8px;
+    transition: color .1s, background .1s;
+}
+
+button:hover div {
+    background-color: rgba(255, 255, 255, 0.25);
+    /* border: double 6px rgba(255, 255, 255, 0.28); */
+    color: rgba(0, 0, 0, 0.4);
 }
 
 /*---- FOOTER ----*/

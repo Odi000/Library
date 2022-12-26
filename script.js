@@ -89,13 +89,18 @@ function viewDescription(e, deleteBtn, trashBin, book) {
     title = bookDescr.querySelector('h1:nth-child(2)'),
     author = bookDescr.querySelector('h1:nth-child(3)'),
     pages = bookDescr.querySelector('h1:nth-child(4)'),
-    descritpion = bookDescr.querySelector('span');
+    descritpion = bookDescr.querySelector('span'),
+    backBtn = bookDescr.querySelector('button');
     
     isRead.textContent += book.read;
     title.textContent += book.title;
     author.textContent += book.author;
     pages.textContent += book.pages;
     descritpion.textContent = book.descr;
+
+    backBtn.onclick = () => {
+        goBack(isRead, title, author, pages, descritpion);
+    };
 }
 
 /* Default Books Description */
@@ -127,4 +132,15 @@ function generateDescr(book) {
             assaulted by a local bully, Amir was too scared to save him, and has been tormented 
             by guilt ever since.`;
     }
+}
+
+/* Back */
+function goBack(isRead, title, author, pages, descritpion) {
+    bookDescr.classList.remove('open');
+    library.style.display = '';
+    isRead.textContent = 'Read: ';
+    title.textContent = 'Title: ';
+    author.textContent = 'Author: ';
+    pages.textContent = 'Pages: ';
+    descritpion.textContent = 'Description:';
 }
