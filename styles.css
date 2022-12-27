@@ -141,7 +141,8 @@ section {
 .unlocked > div > img {
     width: 75%;
     filter: contrast(90%);
-    transition: filter 0.3s;
+    transition: 
+    filter  .3s;
 }
 
 .unlocked > div:hover > img {
@@ -158,6 +159,16 @@ section {
     0 0 0 6px rgba(0, 0, 0, 0.22);
     border-radius: 2px;
     color: wheat;
+}
+
+.new-book [alt="Add"] {
+    filter: none;
+    opacity: 0.35;
+    transition: opacity .3s;
+}
+
+[alt="Add"]:hover {
+    opacity: 0.6;
 }
 
 /*- Delete Button -*/
@@ -217,7 +228,7 @@ h1 {
     margin-bottom: 8px;
 }
 
-h1:last-child {
+h1:nth-child(5) {
     margin-top: 25px;
 }
 
@@ -257,7 +268,6 @@ button div{
 
 button:hover div {
     background-color: rgba(255, 255, 255, 0.25);
-    /* border: double 6px rgba(255, 255, 255, 0.28); */
     color: rgba(0, 0, 0, 0.4);
 }
 

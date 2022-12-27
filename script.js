@@ -5,7 +5,8 @@ const
     bookShelf = document.querySelector('.bookshelf'),
     keyHole = document.querySelector('.key-hole'),
     library = document.querySelector('.library'),
-    bookDescr = document.querySelector('.book-description');
+    bookDescr = document.querySelector('.book-description'),
+    newBookBtn = document.querySelector('.new-book');
 
 keyHole.onclick = function() {
     bookShelf.classList.add('clicked');
@@ -32,31 +33,7 @@ const books = [warAndPeace,theCastle,theGeneral,kiteRunner];
 
 books.forEach(book => {
     generateDescr(book);
-    const divContainer = document.createElement('div');
-    const deleteBtn = document.createElement('div');
-    const trashBin = document.createElement('img');
-    const bookImg = document.createElement('img');
-    const bookTitle = document.createElement('p');
-
-    deleteBtn.appendChild(trashBin);
-    divContainer.appendChild(deleteBtn);
-    divContainer.appendChild(bookImg);
-    divContainer.appendChild(bookTitle);
-
-    deleteBtn.classList.add('delete');
-    trashBin.src = "./images/trash-can.svg";
-    trashBin.alt = "delete";
-
-    bookImg.src = getBookCover();
-
-    bookTitle.textContent = book.title;
-
-    library.appendChild(divContainer);
-
-    deleteBtn.onclick = deleteBook;
-    divContainer.onclick = (e) => {
-        viewDescription(e, deleteBtn, trashBin, book);
-    }
+    insertBookInDOM(book);
 })
 
 /* Book Constructor */
@@ -64,7 +41,8 @@ function Book(title, author, pages, read, descr) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;   
+    this.read = read;
+    this.descr = descr; 
 }
 
 /* Random book img generator */
@@ -143,4 +121,47 @@ function goBack(isRead, title, author, pages, descritpion) {
     author.textContent = 'Author: ';
     pages.textContent = 'Pages: ';
     descritpion.textContent = 'Description:';
+}
+
+/* Add new book */
+newBookBtn.firstElementChild.onclick = createNewBook;
+
+function createNewBook() {
+    const title = prompt('Title:');
+    const author = prompt('Author:');
+    const pages = prompt('Number of pages:');
+    const read = prompt('Have you read it');
+    const description = prompt('A brief summary of the book:');
+    const newBook = new Book(title, author, pages, read, description);
+
+    insertBookInDOM(newBook);
+}
+
+/* Insert Book in DOM */
+function insertBookInDOM(book) {
+    const divContainer = document.createElement('div');
+    const deleteBtn = document.createElement('div');
+    const trashBin = document.createElement('img');
+    const bookImg = document.createElement('img');
+    const bookTitle = document.createElement('p');
+
+    deleteBtn.appendChild(trashBin);
+    divContainer.appendChild(deleteBtn);
+    divContainer.appendChild(bookImg);
+    divContainer.appendChild(bookTitle);
+
+    deleteBtn.classList.add('delete');
+    trashBin.src = "./images/trash-can.svg";
+    trashBin.alt = "delete";
+
+    bookImg.src = getBookCover();
+
+    bookTitle.textContent = book.title;
+
+    library.insertBefore(divContainer, newBookBtn);
+
+    deleteBtn.onclick = deleteBook;
+    divContainer.onclick = (e) => {
+        viewDescription(e, deleteBtn, trashBin, book);
+    }
 }
