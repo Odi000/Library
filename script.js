@@ -6,7 +6,8 @@ const
     keyHole = document.querySelector('.key-hole'),
     library = document.querySelector('.library'),
     bookDescr = document.querySelector('.book-description'),
-    newBookBtn = document.querySelector('.new-book');
+    newBookBtn = document.querySelector('.new-book'),
+    newBookForm = document.querySelector('.new-book-form');
 
 keyHole.onclick = function() {
     bookShelf.classList.add('clicked');
@@ -112,7 +113,7 @@ function generateDescr(book) {
     }
 }
 
-/* Back */
+/* Exit description window */
 function goBack(isRead, title, author, pages, descritpion) {
     bookDescr.classList.remove('open');
     library.style.display = '';
@@ -127,14 +128,16 @@ function goBack(isRead, title, author, pages, descritpion) {
 newBookBtn.firstElementChild.onclick = createNewBook;
 
 function createNewBook() {
-    const title = prompt('Title:');
-    const author = prompt('Author:');
-    const pages = prompt('Number of pages:');
-    const read = prompt('Have you read it');
-    const description = prompt('A brief summary of the book:');
-    const newBook = new Book(title, author, pages, read, description);
+    library.style.display = 'none';
+    newBookForm.classList.add('active');
+    // const title = prompt('Title:');
+    // const author = prompt('Author:');
+    // const pages = prompt('Number of pages:');
+    // const read = prompt('Have you read it');
+    // const description = prompt('A brief summary of the book:');
+    // const newBook = new Book(title, author, pages, read, description);
 
-    insertBookInDOM(newBook);
+    // insertBookInDOM(newBook);
 }
 
 /* Insert Book in DOM */

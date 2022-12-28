@@ -33,6 +33,32 @@
         </h1>
         <button><div>⬅</div></button>
     </div>
+    <form class="new-book-form">
+        <div class="cell">
+            <label for="title">Title:</label>
+                <input type="text" name="title" id="title">
+        </div>
+        <div class="cell">
+            <label for="pages">Nr. of pages:</label>
+            <input type="number" name="pages" id="pages">
+        </div>
+        <div class="cell">
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author">
+        </div>
+        <div class="cell">
+            <label for="read">Already read it:</label>
+            <select name="read" id="read">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+        <div class="cell">
+            <label for="description">Summary:</label>
+            <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        </div>
+        <button type="button"><div>Submit</div></button>
+    </form>
 </section>
 
 <footer></footer>

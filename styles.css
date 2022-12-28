@@ -245,7 +245,7 @@ h1 span {
     color: rgba(255, 255, 255, 0.6);
 }
 
-button {
+.open button {
     position: absolute;
     top: -6px;
     left: -6px;
@@ -259,16 +259,118 @@ button {
     overflow: hidden;
 }
 
-button div{
+.open button div{
     width: 100%;
     height: 100%;
     padding: 6px 8px;
     transition: color .1s, background .1s;
 }
 
-button:hover div {
+.open button:hover div {
     background-color: rgba(255, 255, 255, 0.25);
     color: rgba(0, 0, 0, 0.4);
+}
+
+/* New book form */
+
+.new-book-form {
+    display: none;
+}
+
+.active {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 32px;
+    height: 100%;
+    overflow: auto;
+}
+
+.cell {
+    white-space: nowrap;
+}
+
+.active input,
+.active select,
+.active textarea {
+    display: block;
+    font-size: 24px;
+    font-family: Roboto, sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.14);
+    border: double 6px rgba(255, 255, 255, 0.24);
+    border-radius: 8px;
+    outline: none;
+    transition: border .2s;
+}
+
+label {
+    display: block;
+    margin-bottom: 12px; 
+    font-size: 20px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border: double 6px rgba(255, 255, 255, 0.4);
+}
+
+.cell [type='text'] {
+    width: 80%;
+}
+
+.cell [type='number'] {
+    width: 133px;
+}
+
+
+
+.active > :nth-child(5) {
+    grid-column: 1 / 3;
+}
+
+.active > :nth-child(5) textarea {
+    resize: none;
+    width: 100%;
+    height: 100px;
+}
+
+.active button {
+    grid-column: 1 / 3;
+    justify-self: center;
+}
+
+.active button {
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    width: 200px;
+    padding: 0;
+    background-color: transparent;
+    border: double 6px rgba(255, 255, 255, 0.24);
+    border-radius: 8px;
+
+}
+
+button div {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    transition: color .1s, background .1s;
+}
+
+button:hover div {
+    color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+button:active div {
+    color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(255, 255, 255, 0.38);
 }
 
 /*---- FOOTER ----*/
