@@ -6,8 +6,10 @@ const
     keyHole = document.querySelector('.key-hole'),
     library = document.querySelector('.library'),
     bookDescr = document.querySelector('.book-description'),
-    newBookBtn = document.querySelector('.new-book'),
-    newBookForm = document.querySelector('.new-book-form');
+    openFormBtn = document.querySelector('.new-book'),
+    newBookForm = document.querySelector('.new-book-form'),
+    addBookBtn = document.getElementById('submit');
+    
 
 keyHole.onclick = function() {
     bookShelf.classList.add('clicked');
@@ -125,19 +127,30 @@ function goBack(isRead, title, author, pages, descritpion) {
 }
 
 /* Add new book */
-newBookBtn.firstElementChild.onclick = createNewBook;
+openFormBtn.firstElementChild.onclick = openBookForm;
+addBookBtn.onclick = addNewBook;
 
-function createNewBook() {
+function openBookForm() {
+    const backBtn = newBookForm.querySelector('.back');
+
     library.style.display = 'none';
     newBookForm.classList.add('active');
-    // const title = prompt('Title:');
-    // const author = prompt('Author:');
-    // const pages = prompt('Number of pages:');
-    // const read = prompt('Have you read it');
-    // const description = prompt('A brief summary of the book:');
-    // const newBook = new Book(title, author, pages, read, description);
+    backBtn.onclick = goBack_2;
+}
 
-    // insertBookInDOM(newBook);
+function addNewBook() {
+    const inputs = [...newBookForm.querySelectorAll('input,select,textarea')];
+    const inputValues = inputs.map(input => input.value);
+    const newBook = new Book(...inputValues);
+
+    insertBookInDOM(newBook);
+    goBack_2();
+}
+
+function goBack_2() {
+    newBookForm.classList.remove('active');
+    library.style.display = '';
+    newBookForm.reset();
 }
 
 /* Insert Book in DOM */
@@ -161,7 +174,7 @@ function insertBookInDOM(book) {
 
     bookTitle.textContent = book.title;
 
-    library.insertBefore(divContainer, newBookBtn);
+    library.insertBefore(divContainer, openFormBtn);
 
     deleteBtn.onclick = deleteBook;
     divContainer.onclick = (e) => {

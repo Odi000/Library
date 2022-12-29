@@ -245,7 +245,7 @@ h1 span {
     color: rgba(255, 255, 255, 0.6);
 }
 
-.open button {
+.back {
     position: absolute;
     top: -6px;
     left: -6px;
@@ -259,14 +259,14 @@ h1 span {
     overflow: hidden;
 }
 
-.open button div{
+.back div{
     width: 100%;
     height: 100%;
     padding: 6px 8px;
     transition: color .1s, background .1s;
 }
 
-.open button:hover div {
+.back:hover div {
     background-color: rgba(255, 255, 255, 0.25);
     color: rgba(0, 0, 0, 0.4);
 }
@@ -281,7 +281,9 @@ h1 span {
     display: grid;
     grid-template-columns: repeat(2, minmax(100px, 1fr));
     gap: 10px;
+    column-gap: 28px;
     padding: 32px;
+    padding-left: 38px;
     height: 100%;
     overflow: auto;
 }
@@ -320,14 +322,12 @@ textarea:focus {
 }
 
 .cell [type='text'] {
-    width: 80%;
+    width: 100%;
 }
 
 .cell [type='number'] {
     width: 133px;
 }
-
-
 
 .active > :nth-child(5) {
     grid-column: 1 / 3;
@@ -339,12 +339,9 @@ textarea:focus {
     height: 100px;
 }
 
-.active button {
+#submit {
     grid-column: 1 / 3;
     justify-self: center;
-}
-
-.active button {
     font-size: 24px;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.7);
@@ -353,22 +350,21 @@ textarea:focus {
     background-color: transparent;
     border: double 6px rgba(255, 255, 255, 0.24);
     border-radius: 8px;
-
 }
 
-button div {
+#submit div {
     height: 100%;
     display: grid;
     place-items: center;
     transition: color .1s, background .1s;
 }
 
-button:hover div {
+#submit:hover div {
     color: rgba(0, 0, 0, 0.4);
     background-color: rgba(255, 255, 255, 0.25);
 }
 
-button:active div {
+#submit:active div {
     color: rgba(0, 0, 0, 0.55);
     background-color: rgba(255, 255, 255, 0.38);
 }
