@@ -11,6 +11,9 @@
 :root {
     font-size: 10px;
     font-family: sans-serif;
+    --txt-shadow: #00000080;
+    --txt-clr: #ffffffe6;
+    --border: double .6rem #ffffff3d;
 }
 
 body {
@@ -30,9 +33,9 @@ body {
 nav,
 section,
 footer {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #ffffff1a;
     backdrop-filter: blur(12px);
-    border: double 6px rgba(255, 255, 255, 0.12);
+    border: var(--border);
     transition: 
     background-color 0.3s,
     border 0.3s;
@@ -41,8 +44,8 @@ footer {
 nav:hover,
 section:hover,
 footer:hover {
-    background-color: rgba(255, 255, 255, 0.14);
-    border: double 6px rgba(255, 255, 255, 0.16);
+    background-color: #ffffff24;
+    border: double .6rem #ffffff29;
 }
 
 nav:hover {
@@ -56,19 +59,19 @@ footer:hover {
 /*---- HEADER ----*/
 
 nav {
-    height: 60px;
+    height: 6rem;
     width: 95%;
     border-top: none;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
 }
 
 /*---- BOOKSHELF ----*/
 
 section {
-    height: 480px;
+    height: 48rem;
     width: 60%;
-    border-radius: 20px;
+    border-radius: 2rem;
     display: grid;
     place-items: center;
     overflow: hidden;
@@ -78,7 +81,7 @@ section {
 
 .bookshelf {
     position: relative;
-    width: min(50%, 430px);
+    width: min(50%, 43rem);
     height: auto;
     background-size: contain;
     background-repeat: no-repeat;
@@ -124,11 +127,11 @@ section {
 .unlocked {
     font-family: Andika;
     max-height: 100%;
-    padding: 32px;
+    padding: 3.2rem;
     display: grid;
     grid-template-columns: 
-    repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
+    repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 2rem;
     text-align: center;
     overflow-y: auto;
 }
@@ -150,14 +153,14 @@ section {
 }
 
 .unlocked p {
-    font-size: 22px;
+    font-size: 2.2rem;
     font-weight: 700;
     width: fit-content;
-    margin: 16px auto 0;
-    background-color: rgba(0, 0, 0, 0.22);
+    margin: 1.6rem auto 0;
+    background-color: #00000038;
     box-shadow:
-    0 0 0 6px rgba(0, 0, 0, 0.22);
-    border-radius: 2px;
+    0 0 0 .6rem #00000038;
+    border-radius: .2rem;
     color: wheat;
 }
 
@@ -180,11 +183,11 @@ section {
 
 .unlocked > div:hover .delete {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -.8rem;
+    right: -.8rem;
     width: 16%;
     background-color: red;
-    border-radius: 3px;
+    border-radius: .3rem;
     display: grid;
     place-items: center;
 }
@@ -214,61 +217,61 @@ section {
 
 .open {
     display: block;
-    padding: 32px;
-    padding-left: 38px;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    padding: 3.2rem;
+    padding-left: 3.8rem;
+    color: var(--txt-clr);
+    text-shadow: .2rem .2rem .2rem var(--txt-shadow);
     max-height: 100%;
     overflow: auto;
 }
 
 h1 {
     font-family: Roboto, sans-serif;
-    font-size: 28px;
-    margin-bottom: 8px;
+    font-size: 2.8rem;
+    margin-bottom: .8rem;
 }
 
 h1:nth-child(5) {
-    margin-top: 25px;
+    margin-top: 2.5rem;
 }
 
 h1 span {
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 400;
 }
 
 .open p {
-    font-size: 32px;
+    font-size: 3.2rem;
     font-weight: 700;
     float: right;
     text-shadow: none;
-    color: rgba(255, 255, 255, 0.6);
+    color: #ffffff99;
 }
 
 .back {
     position: absolute;
-    top: -6px;
-    left: -6px;
+    top: -.6rem;
+    left: -.6rem;
     padding: 0;
-    font-size: 20px;
+    font-size: 2rem;
     font-family: Roboto, sans-serif;
     background-color: transparent;
-    color: rgba(255, 255, 255, 0.6);
-    border: double 6px rgba(255, 255, 255, 0.16);
-    border-bottom-right-radius: 18px;
+    color: #ffffff99;
+    border: var(--border);
+    border-bottom-right-radius: 1.8rem;
     overflow: hidden;
 }
 
 .back div{
     width: 100%;
     height: 100%;
-    padding: 6px 8px;
+    padding: .6rem .8rem;
     transition: color .1s, background .1s;
 }
 
 .back:hover div {
-    background-color: rgba(255, 255, 255, 0.25);
-    color: rgba(0, 0, 0, 0.4);
+    background-color: #ffffff40;
+    color: #00000066;
 }
 
 /* New book form */
@@ -279,11 +282,11 @@ h1 span {
 
 .active {
     display: grid;
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
-    gap: 10px;
-    column-gap: 28px;
-    padding: 32px;
-    padding-left: 38px;
+    grid-template-columns: repeat(2, minmax(10rem, 1fr));
+    gap: 1rem;
+    column-gap: 2.8rem;
+    padding: 3.2rem;
+    padding-left: 3.8rem;
     height: 100%;
     overflow: auto;
 }
@@ -296,29 +299,29 @@ h1 span {
 .active select,
 .active textarea {
     display: block;
-    font-size: 24px;
+    font-size: 2.4rem;
     font-family: Roboto, sans-serif;
-    color: rgba(255, 255, 255, 0.9);
-    background-color: rgba(0, 0, 0, 0.14);
-    border: double 6px rgba(255, 255, 255, 0.24);
-    border-radius: 8px;
+    color: var(--txt-clr);
+    background-color: #00000024;
+    border: var(--border);
+    border-radius: .8rem;
     outline: none;
     transition: border .2s;
 }
 
 label {
     display: block;
-    margin-bottom: 12px; 
-    font-size: 20px;
+    margin-bottom: 1.2rem; 
+    font-size: 2rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    color: var(--txt-clr);
+    text-shadow: .2rem .2rem .2rem var(--txt-shadow);
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-    border: double 6px rgba(255, 255, 255, 0.4);
+    border: double .6rem #ffffff66;
 }
 
 .cell [type='text'] {
@@ -326,7 +329,7 @@ textarea:focus {
 }
 
 .cell [type='number'] {
-    width: 133px;
+    width: 13.3rem;
 }
 
 .active > :nth-child(5) {
@@ -336,20 +339,20 @@ textarea:focus {
 .active > :nth-child(5) textarea {
     resize: none;
     width: 100%;
-    height: 100px;
+    height: 10rem;
 }
 
 #submit {
     grid-column: 1 / 3;
     justify-self: center;
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.7);
-    width: 200px;
+    width: 20rem;
     padding: 0;
     background-color: transparent;
-    border: double 6px rgba(255, 255, 255, 0.24);
-    border-radius: 8px;
+    border: var(--border);
+    border-radius: .8rem;
 }
 
 #submit div {
@@ -372,9 +375,9 @@ textarea:focus {
 /*---- FOOTER ----*/
 
 footer {
-    height: 55px;
+    height: 5.5rem;
     width: 50%;
     border-bottom: none;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
 }
