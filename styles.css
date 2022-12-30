@@ -10,7 +10,7 @@
 
 :root {
     font-size: 10px;
-    font-family: sans-serif;
+    font-family: Roboto, sans-serif;
     --txt-shadow: #00000080;
     --txt-clr: #ffffffe6;
     --border: double .6rem #ffffff3d;
@@ -59,13 +59,58 @@ footer:hover {
 /*---- HEADER ----*/
 
 nav {
-    height: 6rem;
+    height: 8rem;
     width: 95%;
+    padding: 0 3.2rem;
     border-top: none;
     border-bottom-left-radius: 1.2rem;
     border-bottom-right-radius: 1.2rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.center {
+    height: 100%;
+}
+
+.center img {
+    height: 100%;
+    scale: 1.09;
+}
+
+.handles {
+    height: fit-content;
+}
+
+.handles a {
+    display: inline-block;
+    width: 3.6rem;
+}
+
+.handles > :first-child {
+    margin-right: 1.6rem;
+}
+
+.handles img {
+    width: 100%;
+}
+
+h2 {
+    font-size: 2.4rem;
+    color: var(--txt-clr);
+    margin-left: 1.3rem;
+    transition: background .2s;
+}
+
+h2:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.14);
+    box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.14);
+    border-radius: 4px;
+}
 /*---- BOOKSHELF ----*/
 
 section {
