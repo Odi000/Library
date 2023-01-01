@@ -38,14 +38,16 @@ footer {
     border: var(--border);
     transition: 
     background-color 0.3s,
-    border 0.3s;
+    border 0.3s,
+    width 0.1s,
+    height 0.1s;
 }
 
 nav:hover,
 section:hover,
 footer:hover {
-    background-color: #ffffff24;
-    border: double .6rem #ffffff29;
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    border: double .6rem #ffffff52;
 }
 
 nav:hover {
@@ -458,16 +460,68 @@ h1 {
 
 footer a {
     text-decoration: none;
-    color: black;
+    color: var(--txt-clr);
     border-radius: 4px;
-    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.35);
+    text-shadow: 
+    2px 2px 0 rgba(0, 0, 0, 0.9),
+    -2px -2px 0 rgba(0, 0, 0, 0.9),
+    -2px 2px 0 rgba(0, 0, 0, 0.9),
+    2px -2px 0 rgba(0, 0, 0, 0.9);
     transition: 
     background .2s,
     box-shadow .2s;
 }
 
 footer a:hover {
-    background-color: #00000038;
-    box-shadow: 0 0 0 2px #00000038;
-    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.25);
+    text-decoration: underline;
+}
+
+/* Media Query */
+
+@media (max-width: 1600px) {
+    section {
+        width: 960px;
+    }
+    footer {
+        width: 800px;
+    }
+}
+
+@media (max-width: 1200px) {
+    nav {
+        width: 100%;
+    }
+}
+
+@media (max-width: 960px) {
+    section {
+        width: 95%;
+    }
+    footer {
+        width: 100%;
+    }
+}
+
+@media (max-width: 720px) {
+    :root {
+        font-size: 9px;
+    }
+    section {
+        height: 60rem;
+    }
+}
+
+@media (max-width: 560px) {
+    :root {
+        font-size: 8px;
+    }
+    section {
+        height: 76rem;
+    }
+    h1 {
+        font-size: 2.2rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
 }
