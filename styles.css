@@ -89,8 +89,25 @@ nav {
     width: 3.6rem;
 }
 
+.handles > * {
+    transition: 
+    transform .5s,
+    scale .3s;
+}
+
 .handles > :first-child {
     margin-right: 1.6rem;
+    filter: drop-shadow(0 0 8px #ffffff26);
+}
+
+.handles > :last-child:hover {
+    scale: 1.2;
+}
+
+.handles > :first-child:hover {
+    transform: 
+    rotate(-360deg)
+    scale(1.2);
 }
 
 .handles img {
@@ -101,7 +118,10 @@ h2 {
     font-size: 2.4rem;
     color: var(--txt-clr);
     margin-left: 1.3rem;
-    transition: background .2s;
+    border-radius: 4px;
+    transition: 
+    background .2s,
+    box-shadow .2s;
 }
 
 h2:hover {
@@ -109,7 +129,6 @@ h2:hover {
     background-color: rgba(255, 255, 255, 0.14);
     box-shadow:
     0 0 0 6px rgba(255, 255, 255, 0.14);
-    border-radius: 4px;
 }
 /*---- BOOKSHELF ----*/
 
@@ -246,7 +265,7 @@ section {
 }
 
 .delete:hover {
-    scale: 1.1;
+    scale: 1.15;
 }
 
 .delete:active {
@@ -420,9 +439,34 @@ textarea:focus {
 /*---- FOOTER ----*/
 
 footer {
-    height: 5.5rem;
+    height: 6.4rem;
     width: 50%;
     border-bottom: none;
     border-top-left-radius: 1.2rem;
     border-top-right-radius: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: var(--txt-clr);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+    margin: 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: black;
+    border-radius: 4px;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.35);
+    transition: 
+    background .2s,
+    box-shadow .2s;
+}
+
+footer a:hover {
+    background-color: #00000038;
+    box-shadow: 0 0 0 2px #00000038;
+    text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.25);
 }
