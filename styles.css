@@ -32,7 +32,8 @@ body {
 
 nav,
 section,
-footer {
+footer,
+.credits {
     background-color: #ffffff1a;
     backdrop-filter: blur(12px);
     border: var(--border);
@@ -127,12 +128,51 @@ h2 {
     box-shadow .2s;
 }
 
-h2:hover {
+nav h2:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.14);
     box-shadow:
     0 0 0 6px rgba(255, 255, 255, 0.14);
 }
+
+.credits {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: .4rem;
+    padding: 2.4rem;
+}
+
+.credits ul {
+    color: var(--txt-clr);
+    font-size: 2.2rem;
+    margin-top: 3.2rem;
+}
+
+.credits a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.credits a:hover {
+    text-decoration: underline;
+}
+
+.credits button {
+    position: absolute;
+    top: .6rem;
+    right: 1.2rem;
+    background-color: transparent;
+    color: var(--txt-clr);
+    border: none;
+    font-size: 2.4rem;
+    transition: scale .2s;
+}
+
+.credits button:hover {
+    scale: 1.2;
+}
+
 /*---- BOOKSHELF ----*/
 
 section {

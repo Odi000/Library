@@ -181,3 +181,59 @@ function insertBookInDOM(book) {
         viewDescription(e, deleteBtn, trashBin, book);
     }
 }
+
+/* Show credits */
+//Everything manually here just because I didn't want to tire the PC
+const creditsBtn = document.querySelector('h2');
+const credits = document.createElement('div');
+
+createCredits(credits);
+
+creditsBtn.onclick = function () {
+    document.body.appendChild(credits);
+}
+
+function createCredits(credits) {
+    const title = document.createElement('h2');
+    const list = document.createElement('ul');
+    const 
+        liEl_0 = document.createElement('li'),
+        liEl_1 = document.createElement('li'),
+        liEl_2 = document.createElement('li'),
+        liEl_3 = document.createElement('li');
+    const 
+        link_0 = document.createElement('a'),
+        link_1 = document.createElement('a'),
+        link_2 = document.createElement('a'),
+        link_3 = document.createElement('a');
+    const closeBtn = document.createElement('button');
+    
+    liEl_0.appendChild(link_0);
+    liEl_1.appendChild(link_1);
+    liEl_2.appendChild(link_2);
+    liEl_3.appendChild(link_3);
+    list.appendChild(liEl_0);
+    list.appendChild(liEl_1);
+    list.appendChild(liEl_2);
+    list.appendChild(liEl_3);
+    credits.appendChild(title);
+    credits.appendChild(list);
+    credits.appendChild(closeBtn);
+    
+    link_0.href = "https://www.pexels.com/photo/green-leafed-tree-38136/";
+    link_1.href = "https://www.flaticon.com/free-icons/bookshelf";
+    link_2.href = "https://www.flaticon.com/free-icons/library";
+    link_3.href = "https://www.flaticon.com/free-icons/bookshelf";
+    link_0.target = "_blank";
+    link_1.target = "_blank";
+    link_2.target = "_blank";
+    link_3.target = "_blank";
+    link_0.textContent = "Background photo by Veeterzy";
+    link_1.textContent = "Bookshelf created by Smalllikeart - Flaticon";
+    link_2.textContent = "Library icon created by Smashicons - Flaticon";
+    link_3.textContent = "Literature, Bookshelf & Book icons created by Freepik - Flaticon";
+    title.textContent = "Special thanks go to image creators:";
+    closeBtn.textContent = '⨉';
+    credits.classList.add('credits');
+    closeBtn.onclick = () => credits.remove();
+}
