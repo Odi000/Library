@@ -48,6 +48,16 @@ function Book(title, author, pages, read, descr) {
     this.descr = descr; 
 }
 
+class Book {
+    constructor(title,author,pages,read,descr) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.descr = descr; 
+    }
+}
+
 /* Random book img generator */
 function getBookCover() {
     const randomNr = Math.floor(Math.random()*10+1);
