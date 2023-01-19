@@ -9,94 +9,119 @@ const
     openFormBtn = document.querySelector('.new-book'),
     newBookForm = document.querySelector('.new-book-form'),
     addBookBtn = document.getElementById('submit');
-    
 
-keyHole.onclick = function() {
+
+keyHole.onclick = function () {
     bookShelf.classList.add('clicked');
 }
 
 bookShelf.addEventListener('transitionend', (e) => {
-    if(e.propertyName !== 'scale') return;
+    if (e.propertyName !== 'scale') return;
     bookShelf.style.display = 'none';
     section.style.display = 'block';
     library.classList.add('unlocked');
 })
 
-/*-- Creating the Books --*/
-
-const warAndPeace = 
-new Book('War and Peace', 'Leo Tolstoy', 1225, 'Yes');
-const theCastle = 
-new Book('The Castle', 'Franz Kafka', 416, 'Yes');
-const theGeneral = 
-new Book('The General of the Dead Army', 'Ismail Kadare', 264, 'Yes');
-const kiteRunner = 
-new Book('The Kite Runner', 'Khaled Hosseini', 371, 'Yes');
-const books = [warAndPeace,theCastle,theGeneral,kiteRunner];
-
-books.forEach(book => {
-    generateDescr(book);
-    insertBookInDOM(book);
-})
-
-/* Book Constructor */
-function Book(title, author, pages, read, descr) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.descr = descr; 
-}
+/*-- Book Constructor --*/
+//Wasn't build using Class in the beginning
+//I just turned in a Class after the project was finished
+//so some of the methods arent build in the most perfect way
 
 class Book {
-    constructor(title,author,pages,read,descr) {
+    constructor(title, author, pages, read, descr) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
-        this.descr = descr; 
+        this.descr = descr;
+    }
+
+    /* Random book img generator */
+    getBookCover() {
+        const randomNr = Math.floor(Math.random() * 10 + 1);
+        return `./images/books/book_${randomNr}.png`;
+    }
+
+    /* Insert Book in DOM */
+    insertBookInDOM() {
+        const divContainer = document.createElement('div');
+        const deleteBtn = document.createElement('div');
+        const trashBin = document.createElement('img');
+        const bookImg = document.createElement('img');
+        const bookTitle = document.createElement('p');
+
+        deleteBtn.appendChild(trashBin);
+        divContainer.appendChild(deleteBtn);
+        divContainer.appendChild(bookImg);
+        divContainer.appendChild(bookTitle);
+
+        deleteBtn.classList.add('delete');
+        trashBin.src = "./images/trash-can.svg";
+        trashBin.alt = "delete";
+
+        bookImg.src = this.getBookCover();
+
+        bookTitle.textContent = this.title;
+
+        library.insertBefore(divContainer, openFormBtn);
+
+        deleteBtn.onclick = () => this.deleteBook(divContainer);
+        divContainer.onclick = (e) => {
+            this.viewDescription(e, deleteBtn, trashBin);
+        }
+    }
+
+    /* Delete book element */
+    deleteBook(bookContainer) {
+        bookContainer.remove();
+    }
+
+    /* Opened Book */
+    viewDescription(e, deleteBtn, trashBin) {
+        if (e.target === deleteBtn || e.target === trashBin) return
+        library.style.display = 'none';
+        bookDescr.classList.add('open');
+
+        const
+            isRead = bookDescr.querySelector('p'),
+            title = bookDescr.querySelector('h1:nth-child(2)'),
+            author = bookDescr.querySelector('h1:nth-child(3)'),
+            pages = bookDescr.querySelector('h1:nth-child(4)'),
+            descritpion = bookDescr.querySelector('span'),
+            backBtn = bookDescr.querySelector('button');
+
+        isRead.textContent += this.read;
+        title.textContent += this.title;
+        author.textContent += this.author;
+        pages.textContent += this.pages;
+        descritpion.textContent = this.descr;
+
+        backBtn.onclick = () => {
+            goBack(isRead, title, author, pages, descritpion);
+        };
     }
 }
 
-/* Random book img generator */
-function getBookCover() {
-    const randomNr = Math.floor(Math.random()*10+1);
-    return `./images/books/book_${randomNr}.png`;
-}
+/*-- Creating the Books --*/
 
-/* Delete book element */
-function deleteBook() {
-    this.parentNode.remove();
-}
+const warAndPeace =
+    new Book('War and Peace', 'Leo Tolstoy', 1225, 'Yes');
+const theCastle =
+    new Book('The Castle', 'Franz Kafka', 416, 'Yes');
+const theGeneral =
+    new Book('The General of the Dead Army', 'Ismail Kadare', 264, 'Yes');
+const kiteRunner =
+    new Book('The Kite Runner', 'Khaled Hosseini', 371, 'Yes');
+const books = [warAndPeace, theCastle, theGeneral, kiteRunner];
 
-/* Opened Book */
-function viewDescription(e, deleteBtn, trashBin, book) {
-    if(e.target === deleteBtn || e.target === trashBin) return 
-    library.style.display = 'none';
-    bookDescr.classList.add('open');
-
-    const 
-    isRead = bookDescr.querySelector('p'),
-    title = bookDescr.querySelector('h1:nth-child(2)'),
-    author = bookDescr.querySelector('h1:nth-child(3)'),
-    pages = bookDescr.querySelector('h1:nth-child(4)'),
-    descritpion = bookDescr.querySelector('span'),
-    backBtn = bookDescr.querySelector('button');
-    
-    isRead.textContent += book.read;
-    title.textContent += book.title;
-    author.textContent += book.author;
-    pages.textContent += book.pages;
-    descritpion.textContent = book.descr;
-
-    backBtn.onclick = () => {
-        goBack(isRead, title, author, pages, descritpion);
-    };
-}
+books.forEach(book => {
+    generateDescr(book);
+    book.insertBookInDOM();
+})
 
 /* Default Books Description */
 function generateDescr(book) {
-    switch(true) {
+    switch (true) {
         case book.title == 'War and Peace':
             book.descr = `War and Peace broadly focuses on Napoleon’s 
             invasion of Russia in 1812 and follows three of the most well-known 
@@ -153,7 +178,7 @@ function addNewBook() {
     const inputValues = inputs.map(input => input.value);
     const newBook = new Book(...inputValues);
 
-    insertBookInDOM(newBook);
+    newBook.insertBookInDOM();
     goBack_2();
 }
 
@@ -161,35 +186,6 @@ function goBack_2() {
     newBookForm.classList.remove('active');
     library.style.display = '';
     newBookForm.reset();
-}
-
-/* Insert Book in DOM */
-function insertBookInDOM(book) {
-    const divContainer = document.createElement('div');
-    const deleteBtn = document.createElement('div');
-    const trashBin = document.createElement('img');
-    const bookImg = document.createElement('img');
-    const bookTitle = document.createElement('p');
-
-    deleteBtn.appendChild(trashBin);
-    divContainer.appendChild(deleteBtn);
-    divContainer.appendChild(bookImg);
-    divContainer.appendChild(bookTitle);
-
-    deleteBtn.classList.add('delete');
-    trashBin.src = "./images/trash-can.svg";
-    trashBin.alt = "delete";
-
-    bookImg.src = getBookCover();
-
-    bookTitle.textContent = book.title;
-
-    library.insertBefore(divContainer, openFormBtn);
-
-    deleteBtn.onclick = deleteBook;
-    divContainer.onclick = (e) => {
-        viewDescription(e, deleteBtn, trashBin, book);
-    }
 }
 
 /* Show credits */
@@ -206,18 +202,18 @@ creditsBtn.onclick = function () {
 function createCredits(credits) {
     const title = document.createElement('h2');
     const list = document.createElement('ul');
-    const 
+    const
         liEl_0 = document.createElement('li'),
         liEl_1 = document.createElement('li'),
         liEl_2 = document.createElement('li'),
         liEl_3 = document.createElement('li');
-    const 
+    const
         link_0 = document.createElement('a'),
         link_1 = document.createElement('a'),
         link_2 = document.createElement('a'),
         link_3 = document.createElement('a');
     const closeBtn = document.createElement('button');
-    
+
     liEl_0.appendChild(link_0);
     liEl_1.appendChild(link_1);
     liEl_2.appendChild(link_2);
@@ -229,7 +225,7 @@ function createCredits(credits) {
     credits.appendChild(title);
     credits.appendChild(list);
     credits.appendChild(closeBtn);
-    
+
     link_0.href = "https://www.pexels.com/photo/green-leafed-tree-38136/";
     link_1.href = "https://www.flaticon.com/free-icons/bookshelf";
     link_2.href = "https://www.flaticon.com/free-icons/library";
